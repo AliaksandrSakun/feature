@@ -1,0 +1,10 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/trustproject
+    username: root
+    password: 1234
+  jpa:
+    show-sql: true
