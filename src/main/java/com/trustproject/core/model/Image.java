@@ -1,11 +1,10 @@
 package com.trustproject.core.model;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -13,20 +12,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
-
-@Entity
-@Table(name = "en_words")
 @Getter
 @Setter
+@Entity
+@Table(name = "images")
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = {"meaning"})
-public class EnWord {
+@EqualsAndHashCode
+public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String meaning;
-    @OneToMany(mappedBy = "enWord", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Card> cards;
+    private String name;
+    private String originalFilename;
+    private String contentType;
+    private Long size;
+    @Lob
+    private byte[] bytes;
 }

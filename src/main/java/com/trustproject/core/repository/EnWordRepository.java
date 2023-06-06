@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EnWordRepository extends CrudRepository<EnWord, Long> {
     EnWord getById(Long id);
+    EnWord findByMeaning(String word);
 }

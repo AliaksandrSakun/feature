@@ -6,15 +6,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
-
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO {
-    private long id;
-    private String email;
-    private Set<RoleDTO> roles;
+public class CardDTO {
+    private Long id;
+    private EnWordDTO enWord;
+    private RuWordDTO ruWord;
+    private ImageDTO image;
+    private Long rating;
 }

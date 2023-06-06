@@ -1,13 +1,7 @@
 package com.trustproject.core.controllers;
 
 import com.trustproject.core.dto.EnWordDTO;
-import com.trustproject.core.dto.UserDTO;
-import com.trustproject.core.mappers.EnWordMapper;
-import com.trustproject.core.mappers.UserMapper;
-import com.trustproject.core.model.EnWord;
-import com.trustproject.core.model.User;
-import com.trustproject.core.services.EnWordService;
-import com.trustproject.core.services.UserService;
+import com.trustproject.core.facades.EnWordFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,12 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class EnWordController {
 
-    private final EnWordService enWordService;
-    private final EnWordMapper enWordMapper;
+    private final EnWordFacade enWordFacade;
 
     @GetMapping("/en-words/{id}")
-    public EnWordDTO getUserById(@PathVariable Long id) {
-        EnWord enWord = enWordService.getEnWord(id);
-        return enWordMapper.toDTO(enWord);
+    public EnWordDTO getEnWordById(@PathVariable Long id) {
+        return enWordFacade.getEnWordById(id);
+    }
+
+    @GetMapping("/words/{word}")
+    public EnWordDTO getEnWordByWord(@PathVariable String word) {
+        return enWordFacade.getEnWordByWord(word);
     }
 }

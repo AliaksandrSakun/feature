@@ -71,4 +71,23 @@ INSERT INTO `trustproject`.`en_words` (`meaning`) VALUES ('hello');
 INSERT INTO `trustproject`.`ru_words` (`meaning`) VALUES ('привет');
 INSERT INTO `trustproject`.`cards` (`en_word_id`, `ru_word_id`, `rating`) VALUES ('1', '1', '1');
 
+CREATE TABLE `trustproject`.`images` (
+                                         `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+                                         `name` VARCHAR(45) NOT NULL,
+                                         `original_filename` VARCHAR(45) NOT NULL,
+                                         `content_type` VARCHAR(45) NOT NULL,
+                                         `size` BIGINT(20) NOT NULL,
+                                         `bytes` LONGBLOB NOT NULL,
+                                         PRIMARY KEY (`id`));
+
+ALTER TABLE `trustproject`.`cards`
+    ADD COLUMN `image_id` BIGINT(20) NULL AFTER `rating`,
+    ADD INDEX `fk_images_idx` (`image_id` ASC) VISIBLE;
+;
+ALTER TABLE `trustproject`.`cards`
+    ADD CONSTRAINT `fk_images`
+        FOREIGN KEY (`image_id`)
+            REFERENCES `trustproject`.`images` (`id`)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION;
 
