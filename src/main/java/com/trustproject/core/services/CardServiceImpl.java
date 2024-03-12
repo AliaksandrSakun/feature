@@ -25,5 +25,6 @@ public class CardServiceImpl implements CardService {
     @Override
     public void addCard(Card card) {
         cardRepository.save(card);
+
     }
 }
