@@ -1,1 +1,0 @@
-CREATE SCHEMA `trustproject` DEFAULT CHARACTER SET utf8 ;
